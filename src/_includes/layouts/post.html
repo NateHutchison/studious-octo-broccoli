@@ -40,30 +40,30 @@ eleventyComputed:
             <article class="blog-article">
                 <!--Main Article Image-->
                 <picture class="blog-mainImage">
-                    <img src="{{ image }}" alt="{{ imageAlt }}" width="795" height="400" decoding="async" />
+                    <img src="{{ post.node.coverImage.url }}" alt="{{ imageAlt }}" width="795" height="400" decoding="async" />
                 </picture>
 
                 <!--Article Info-->
                 <div class="article-group">
-                    <h1 class="blog-h1">{{ title }}</h1>
+                    <h1 class="blog-h1">{{ post.node.title }}</h1>
                     <div class="blog-authorGroup">
                         <!--Author Image-->
                         <picture class="blog-author-img">
                             <img
-                            src="/assets/svgs/profile.svg"
+                            src="{{ post.node.author.profilePicture }}"
                             alt="house"
                             width="32"
                             height="32"
                             decoding="async">
                         </picture>
-                        <span class="blog-author">{{ author }}</span>
+                        <span class="blog-author">{{ post.node.author.name }}</span>
                         <span aria-hidden="true" class="blog-dot"></span>
                         <!--Blog Date-->
-                        <span class="blog-date">{{ date | postDate }}</span>
+                        <span class="blog-date">{{ post.node.publishedAt | Date }}</span>
                     </div>
                 </div>
                 <section id="blog-content">
-                    {{ content | safe }}
+                    {{ content.html | safe }}
                 </section>
             </article>
         </div>
